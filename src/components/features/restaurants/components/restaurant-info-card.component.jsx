@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Text } from "react-native";
+import { Image } from "react-native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../../assets/star";
 import { tempRestaurant } from "../../../../data/restaurant";
@@ -48,22 +48,17 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
                 key={name}
                 source={{ uri: photos[0] }}
             />
-
             <Info>
                 <Title>{name}</Title>
                 <StarsContainer>{renderStars}</StarsContainer>
-
                 <Wrapper>
                     {renderOpen}
                     {renderBusinessTypeIcon}
                 </Wrapper>
-
                 <Wrapper>{renderOpeningHours}</Wrapper>
-
                 <Wrapper>
                     <Address>{address}</Address>
                 </Wrapper>
-
                 {renderIsClosedTemporarily && <Wrapper>{renderIsClosedTemporarily}</Wrapper>}
             </Info>
         </StyledCard>
