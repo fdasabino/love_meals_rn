@@ -1,10 +1,10 @@
 import React from "react";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
-import { Container, RestaurantsList, Search, SearchBar } from "./styled";
+import { RestaurantsList, SafeArea, Search, SearchBar } from "./styled";
 
 const RestaurantsScreen = () => {
     return (
-        <Container>
+        <SafeArea>
             <Search>
                 <SearchBar
                     mode="bar"
@@ -17,7 +17,7 @@ const RestaurantsScreen = () => {
             <RestaurantsList>
                 <RestaurantInfoCardComponent />
             </RestaurantsList>
-        </Container>
+        </SafeArea>
     );
 };
 

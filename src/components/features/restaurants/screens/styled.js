@@ -1,10 +1,10 @@
-import { StatusBar } from "react-native";
+import { Platform, StatusBar } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
-export const Container = styled.SafeAreaView`
+export const SafeArea = styled.SafeAreaView`
     flex: 1;
-    margin-top: ${StatusBar.currentHeight}px;
+    margin-top: ${Platform.OS === "android" ? StatusBar.currentHeight : 0}px;
 `;
 
 export const Search = styled.View`
