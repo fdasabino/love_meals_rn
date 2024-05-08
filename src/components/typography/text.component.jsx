@@ -54,7 +54,7 @@ const TextStyled = styled.Text`
     ${({ theme, variant, align }) => defaultTextStyles(theme, align) + variants[variant](theme)}
 `;
 
-export const Text = ({ variant = "body", align = "left", children }) => {
+const Text = ({ variant = "body", align = "left", children }) => {
     return (
         <TextStyled
             variant={variant}
