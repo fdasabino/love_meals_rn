@@ -1,17 +1,16 @@
 import React from "react";
-import { Image, Text } from "react-native";
+import { Image } from "react-native";
 import { SvgXml } from "react-native-svg";
-import open from "../../../../../assets/open";
 import star from "../../../../../assets/star";
 import { tempRestaurant } from "../../../../data/restaurant";
-import SpacerComponent from "../../../spacer/spacer.component";
 import {
     Address,
     CardCover,
-    ClosedText,
-    IconContainer,
+    ClosedDot,
+    ClosedTemporarily,
     Info,
-    Section,
+    OpenDot,
+    StarsContainer,
     StyledCard,
     Title,
     Wrapper,
@@ -21,30 +20,27 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
     const { name, photos, icon, address, openingHours, rating, isOpenNow } = restaurant;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
+
     const renderStars = ratingArray.map((_, i) => (
         <SvgXml
             key={`star-${name}-${i}`}
             xml={star}
-            width={20}
-            height={20}
+            width={25}
+            height={25}
         />
     ));
 
-    const renderOpen = isOpenNow ? (
-        <SvgXml
-            xml={open}
-            width={35}
-            height={35}
-        />
-    ) : (
-        <ClosedText>Closed</ClosedText>
-    );
+    const renderOpen = isOpenNow ? <OpenDot /> : <ClosedDot />;
 
-    const renderIcon = icon && (
+    const renderBusinessTypeIcon = icon && (
         <Image
             source={{ uri: icon }}
             style={{ width: 20, height: 20 }}
         />
+    );
+
+    const renderIsClosedTemporarily = restaurant.isClosedTemporarily && (
+        <ClosedTemporarily>Closed Temporarily</ClosedTemporarily>
     );
 
     return (
@@ -56,16 +52,18 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
 
             <Info>
                 <Title>{name}</Title>
-                <Section>
-                    <Wrapper>
-                        <IconContainer>{renderStars}</IconContainer>
-                    </Wrapper>
-                    <Wrapper>
-                        <IconContainer>{renderOpen}</IconContainer>
-                        <IconContainer>{renderIcon}</IconContainer>
-                    </Wrapper>
-                </Section>
-                <Address>{address}</Address>
+                <StarsContainer>{renderStars}</StarsContainer>
+
+                <Wrapper>
+                    {renderOpen}
+                    {renderBusinessTypeIcon}
+                </Wrapper>
+
+                <Wrapper>
+                    <Address>{address}</Address>
+                </Wrapper>
+
+                {renderIsClosedTemporarily && <Wrapper>{renderIsClosedTemporarily}</Wrapper>}
             </Info>
         </StyledCard>
     );

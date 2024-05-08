@@ -1,48 +1,33 @@
-import React from "react";
-import {
-    BottomLarge,
-    BottomMedium,
-    BottomSmall,
-    LeftLarge,
-    LeftMedium,
-    LeftSmall,
-    RightLarge,
-    RightMedium,
-    RightSmall,
-    TopLarge,
-    TopMedium,
-    TopSmall,
-} from "./styled";
+import styled from "styled-components/native";
 
-const SpacerComponent = ({ variant }) => {
-    switch (variant) {
-        case "top.small":
-            return <TopSmall />;
-        case "top.medium":
-            return <TopMedium />;
-        case "top.large":
-            return <TopLarge />;
-        case "bottom.small":
-            return <BottomSmall />;
-        case "bottom.medium":
-            return <BottomMedium />;
-        case "bottom.large":
-            return <BottomLarge />;
-        case "left.small":
-            return <LeftSmall />;
-        case "left.medium":
-            return <LeftMedium />;
-        case "left.large":
-            return <LeftLarge />;
-        case "right.small":
-            return <RightSmall />;
-        case "right.medium":
-            return <RightMedium />;
-        case "right.large":
-            return <RightLarge />;
-        default:
-            return <TopSmall />;
-    }
+const sizeVariant = {
+    small: 1,
+    medium: 2,
+    large: 3,
 };
 
-export default SpacerComponent;
+const positionVariant = {
+    top: "margin-top",
+    left: "margin-left",
+    right: "margin-right",
+    bottom: "margin-bottom",
+};
+
+const getVariant = (position, size, theme) => {
+    const sizeIndex = sizeVariant[size];
+    const property = positionVariant[position];
+    const value = theme.space[sizeIndex];
+    console.log(property, value);
+    return `${property}:${value}px;`;
+};
+
+export const Spacer = styled.View`
+    ${({ position, size, theme }) => getVariant(position, size, theme)};
+`;
+
+Spacer.defaultProps = {
+    position: "top",
+    size: "small",
+};
+
+export default Spacer;

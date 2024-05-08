@@ -7,22 +7,6 @@ export const StyledCard = styled(Card)`
     padding: ${(props) => props.theme.space[2]};
 `;
 
-export const Section = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: ${(props) => props.theme.space[3]};
-    padding-bottom: ${(props) => props.theme.space[3]};
-    padding-left: ${(props) => props.theme.space[1]};
-    padding-right: ${(props) => props.theme.space[1]};
-`;
-
-export const Wrapper = styled.View`
-    flex-direction: row;
-    align-items: center;
-    gap: ${(props) => props.theme.space[3]};
-`;
-
 export const Info = styled.View`
     padding: ${(props) => props.theme.space[3]};
 `;
@@ -33,7 +17,7 @@ export const CardCover = styled(Card.Cover)`
 `;
 
 export const Title = styled.Text`
-    color: ${(props) => props.theme.colors.ui.success};
+    color: ${(props) => props.theme.colors.ui.primary};
     font-family: ${(props) => props.theme.fonts.heading};
     font-size: ${(props) => props.theme.fontSizes.title};
     text-align: center;
@@ -46,11 +30,39 @@ export const Address = styled.Text`
     text-align: center;
 `;
 
-export const IconContainer = styled.View`
+export const StarsContainer = styled.View`
     flex-direction: row;
+    justify-content: center;
+    padding: ${(props) => props.theme.space[3]};
 `;
 
-export const ClosedText = styled.Text`
-    color: ${(props) => props.theme.colors.ui.error};
+export const Wrapper = styled.View`
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: ${(props) => props.theme.space[3]};
+    padding: ${(props) => props.theme.space[3]};
+`;
+
+export const OpenDot = styled.View`
+    background-color: ${(props) => props.theme.colors.ui.success};
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+`;
+export const ClosedDot = styled.View`
+    background-color: ${(props) => props.theme.colors.ui.error};
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+`;
+
+export const ClosedTemporarily = styled.Text`
+    width: 100%;
+    background-color: ${(props) => props.theme.colors.ui.error};
+    padding: ${(props) => props.theme.space[2]};
+    color: ${(props) => props.theme.colors.text.inverse};
+    text-align: center;
     font-family: ${(props) => props.theme.fonts.body};
+    font-size: ${(props) => props.theme.fontSizes.body};
 `;
