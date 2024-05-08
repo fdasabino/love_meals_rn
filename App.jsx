@@ -1,5 +1,7 @@
-// Code for the App component
+// Imports
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+
+// Screens
 import RestaurantsScreen from "./src/components/features/restaurants/screens/restaurants.screen";
 
 const App = () => {
