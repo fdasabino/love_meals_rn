@@ -1,11 +1,11 @@
 import React from "react";
 import Spacer from "../../../spacer/spacer.component";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
-import { RestaurantsList, SafeArea, Search, SearchBar } from "./restaurants.screen.styles";
+import { RestaurantsList, Search, SearchBar } from "./restaurants.screen.styles";
 
 const RestaurantsScreen = () => {
     return (
-        <SafeArea>
+        <>
             <Search>
                 <SearchBar
                     mode="bar"
@@ -27,7 +27,7 @@ const RestaurantsScreen = () => {
                     </Spacer>
                 )}
             />
-        </SafeArea>
+        </>
     );
 };
 
