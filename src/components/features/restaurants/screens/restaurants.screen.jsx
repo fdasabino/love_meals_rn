@@ -1,5 +1,4 @@
 import React from "react";
-import { FlatList } from "react-native";
 import Spacer from "../../../spacer/spacer.component";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
 import { RestaurantsList, SafeArea, Search, SearchBar } from "./restaurants.screen.styles";
@@ -17,20 +16,17 @@ const RestaurantsScreen = () => {
                 />
             </Search>
 
-            <RestaurantsList>
-                <FlatList
-                    data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
-                    renderItem={() => (
-                        <Spacer
-                            position="bottom"
-                            size="large">
-                            <RestaurantInfoCardComponent />
-                        </Spacer>
-                    )}
-                    keyExtractor={(item) => item.name}
-                    contentContainerStyle={{ padding: 5 }}
-                />
-            </RestaurantsList>
+            <RestaurantsList
+                data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
+                keyExtractor={(item) => item.name}
+                renderItem={() => (
+                    <Spacer
+                        position="bottom"
+                        size="large">
+                        <RestaurantInfoCardComponent />
+                    </Spacer>
+                )}
+            />
         </SafeArea>
     );
 };

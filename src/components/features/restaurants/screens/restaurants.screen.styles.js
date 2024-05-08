@@ -1,4 +1,4 @@
-import { Platform, StatusBar } from "react-native";
+import { FlatList, Platform, StatusBar } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
@@ -19,6 +19,10 @@ export const SearchBar = styled(Searchbar)`
     padding-right: ${(props) => props.theme.space[2]};
 `;
 
-export const RestaurantsList = styled.View`
+export const RestaurantsList = styled(FlatList).attrs({
+    contentContainerStyle: {
+        padding: 16,
+    },
+})`
     flex: 0.9;
 `;
