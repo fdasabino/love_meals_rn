@@ -7,7 +7,7 @@ export const tempRestaurant = {
     ],
     address: "710 Florida St, San Francisco, CA 94110",
     openingHours: "Monday: Closed, Tue-Sun: 11:30am-3pm, 5pm-9pm",
-    isOpenNow: true,
-    rating: 4.5,
     isClosedTemporarily: false,
+    isOpenNow: true,
+    rating: 5,
 };
