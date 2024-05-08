@@ -6,6 +6,16 @@ export const StyledCard = styled(Card)`
     margin: ${(props) => props.theme.space[2]};
 `;
 
+export const Section = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: ${(props) => props.theme.space[3]};
+    padding-bottom: ${(props) => props.theme.space[3]};
+    padding-left: ${(props) => props.theme.space[1]};
+    padding-right: ${(props) => props.theme.space[1]};
+`;
+
 export const Info = styled.View`
     padding: ${(props) => props.theme.space[3]};
 `;
@@ -25,4 +35,14 @@ export const Address = styled.Text`
     color: ${(props) => props.theme.colors.ui.primary};
     font-family: ${(props) => props.theme.fonts.body};
     font-size: ${(props) => props.theme.fontSizes.caption};
+`;
+
+export const IconContainer = styled.View`
+    flex-direction: row;
+    gap: 2px;
+`;
+
+export const ClosedText = styled.Text`
+    color: ${(props) => props.theme.colors.ui.error};
+    font-family: ${(props) => props.theme.fonts.body};
 `;

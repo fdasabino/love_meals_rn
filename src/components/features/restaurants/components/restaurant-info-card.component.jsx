@@ -1,5 +1,18 @@
 import React from "react";
-import { Address, CardCover, Info, StyledCard, Title } from "./styled";
+import { Text } from "react-native";
+import { SvgXml } from "react-native-svg";
+import open from "../../../../../assets/open";
+import star from "../../../../../assets/star";
+import {
+    Address,
+    CardCover,
+    ClosedText,
+    IconContainer,
+    Info,
+    Section,
+    StyledCard,
+    Title,
+} from "./styled";
 
 const RestaurantInfoCardComponent = ({ restaurant = {} }) => {
     const {
@@ -14,6 +27,26 @@ const RestaurantInfoCardComponent = ({ restaurant = {} }) => {
         isOpenNow = true,
     } = restaurant;
 
+    const ratingArray = Array.from(new Array(Math.floor(rating)));
+    const renderStars = ratingArray.map((_, i) => (
+        <SvgXml
+            key={`star-${name}-${i}`}
+            xml={star}
+            width={20}
+            height={20}
+        />
+    ));
+
+    const renderOpen = isOpenNow ? (
+        <SvgXml
+            xml={open}
+            width={35}
+            height={35}
+        />
+    ) : (
+        <ClosedText>Closed</ClosedText>
+    );
+
     return (
         <StyledCard elevation={5}>
             <CardCover
@@ -23,6 +56,10 @@ const RestaurantInfoCardComponent = ({ restaurant = {} }) => {
 
             <Info>
                 <Title>{name}</Title>
+                <Section>
+                    <IconContainer>{renderStars}</IconContainer>
+                    <IconContainer>{renderOpen}</IconContainer>
+                </Section>
                 <Address>{address}</Address>
             </Info>
         </StyledCard>
