@@ -1,5 +1,5 @@
 import React from "react";
-import { CardCover, StyledCard, Title } from "./styled";
+import { Address, CardCover, Info, StyledCard, Title } from "./styled";
 
 const RestaurantInfoCardComponent = ({ restaurant = {} }) => {
     const {
@@ -20,7 +20,11 @@ const RestaurantInfoCardComponent = ({ restaurant = {} }) => {
                 key={name}
                 source={{ uri: photos[0] }}
             />
-            <Title>{name}</Title>
+
+            <Info>
+                <Title>{name}</Title>
+                <Address>{address}</Address>
+            </Info>
         </StyledCard>
     );
 };
