@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 export const StyledCard = styled(Card)`
     background-color: ${(props) => props.theme.colors.bg.primary};
     margin: ${(props) => props.theme.space[2]};
+    padding: ${(props) => props.theme.space[2]};
 `;
 
 export const Section = styled.View`
@@ -14,6 +15,12 @@ export const Section = styled.View`
     padding-bottom: ${(props) => props.theme.space[3]};
     padding-left: ${(props) => props.theme.space[1]};
     padding-right: ${(props) => props.theme.space[1]};
+`;
+
+export const Wrapper = styled.View`
+    flex-direction: row;
+    align-items: center;
+    gap: ${(props) => props.theme.space[3]};
 `;
 
 export const Info = styled.View`
@@ -29,17 +36,18 @@ export const Title = styled.Text`
     color: ${(props) => props.theme.colors.ui.success};
     font-family: ${(props) => props.theme.fonts.heading};
     font-size: ${(props) => props.theme.fontSizes.title};
+    text-align: center;
 `;
 
 export const Address = styled.Text`
     color: ${(props) => props.theme.colors.ui.primary};
     font-family: ${(props) => props.theme.fonts.body};
-    font-size: ${(props) => props.theme.fontSizes.caption};
+    font-size: ${(props) => props.theme.fontSizes.body};
+    text-align: center;
 `;
 
 export const IconContainer = styled.View`
     flex-direction: row;
-    gap: 2px;
 `;
 
 export const ClosedText = styled.Text`
