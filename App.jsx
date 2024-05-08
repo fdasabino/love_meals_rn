@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme/index";
 
 // Screens
-import AppLoading from "expo-app-loading";
+import { Text } from "react-native";
 import RestaurantsScreen from "./src/components/features/restaurants/screens/restaurants.screen";
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
     });
 
     if (!fontsLoaded) {
-        <AppLoading />;
+        return <Text>Loading...</Text>;
     }
 
     return (
