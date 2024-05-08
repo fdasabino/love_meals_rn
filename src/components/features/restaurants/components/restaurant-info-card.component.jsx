@@ -3,17 +3,15 @@ import { Image } from "react-native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../../assets/star";
 import { tempRestaurant } from "../../../../data/restaurant";
+import Text from "../../../typography/text.component";
 import {
-    Address,
     CardCover,
     ClosedDot,
     ClosedTemporarily,
     Info,
     OpenDot,
-    OpeningHours,
     StarsContainer,
     StyledCard,
-    Title,
     Wrapper,
 } from "./styled";
 
@@ -39,7 +37,11 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
         <ClosedTemporarily>Closed Temporarily</ClosedTemporarily>
     );
     const renderOpeningHours = openingHours && (
-        <OpeningHours>Opening Hours: {openingHours}</OpeningHours>
+        <Text
+            variant="body"
+            align="center">
+            Opening Hours: {openingHours}
+        </Text>
     );
 
     return (
@@ -49,7 +51,11 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
                 source={{ uri: photos[0] }}
             />
             <Info>
-                <Title>{name}</Title>
+                <Text
+                    variant="title"
+                    align="center">
+                    {name}
+                </Text>
                 <StarsContainer>{renderStars}</StarsContainer>
                 <Wrapper>
                     {renderOpen}
@@ -57,7 +63,11 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
                 </Wrapper>
                 <Wrapper>{renderOpeningHours}</Wrapper>
                 <Wrapper>
-                    <Address>{address}</Address>
+                    <Text
+                        variant="body"
+                        align="center">
+                        {address}
+                    </Text>
                 </Wrapper>
                 {renderIsClosedTemporarily && <Wrapper>{renderIsClosedTemporarily}</Wrapper>}
             </Info>

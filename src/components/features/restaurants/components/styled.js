@@ -16,20 +16,6 @@ export const CardCover = styled(Card.Cover)`
     background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-export const Title = styled.Text`
-    color: ${(props) => props.theme.colors.ui.primary};
-    font-family: ${(props) => props.theme.fonts.heading};
-    font-size: ${(props) => props.theme.fontSizes.title};
-    text-align: center;
-`;
-
-export const Address = styled.Text`
-    color: ${(props) => props.theme.colors.ui.primary};
-    font-family: ${(props) => props.theme.fonts.body};
-    font-size: ${(props) => props.theme.fontSizes.body};
-    text-align: center;
-`;
-
 export const StarsContainer = styled.View`
     flex-direction: row;
     justify-content: center;
@@ -65,11 +51,4 @@ export const ClosedTemporarily = styled.Text`
     text-align: center;
     font-family: ${(props) => props.theme.fonts.body};
     font-size: ${(props) => props.theme.fontSizes.body};
-`;
-
-export const OpeningHours = styled.Text`
-    color: ${(props) => props.theme.colors.ui.primary};
-    font-family: ${(props) => props.theme.fonts.body};
-    font-size: ${(props) => props.theme.fontSizes.body};
-    text-align: center;
 `;
