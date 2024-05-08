@@ -45,22 +45,4 @@ const SpacerComponent = ({ variant }) => {
     }
 };
 
-const SpacerProps = {
-    variant:
-        "top.small" |
-        "top.medium" |
-        "top.large" |
-        "bottom.small" |
-        "bottom.medium" |
-        "bottom.large" |
-        "left.small" |
-        "left.medium" |
-        "left.large" |
-        "right.small" |
-        "right.medium" |
-        "right.large",
-};
-
-SpacerComponent.propTypes = SpacerProps;
-
 export default SpacerComponent;

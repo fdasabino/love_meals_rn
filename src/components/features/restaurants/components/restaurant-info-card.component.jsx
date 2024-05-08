@@ -4,6 +4,7 @@ import { SvgXml } from "react-native-svg";
 import open from "../../../../../assets/open";
 import star from "../../../../../assets/star";
 import { tempRestaurant } from "../../../../data/restaurant";
+import SpacerComponent from "../../../spacer/spacer.component";
 import {
     Address,
     CardCover,
