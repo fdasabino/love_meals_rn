@@ -14,6 +14,7 @@ const RestaurantsScreen = () => {
                     onChangeText={(query) => console.log(query)}
                 />
             </Search>
+
             <RestaurantsList>
                 <RestaurantInfoCardComponent />
             </RestaurantsList>

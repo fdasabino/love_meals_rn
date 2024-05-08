@@ -66,3 +66,10 @@ export const ClosedTemporarily = styled.Text`
     font-family: ${(props) => props.theme.fonts.body};
     font-size: ${(props) => props.theme.fontSizes.body};
 `;
+
+export const OpeningHours = styled.Text`
+    color: ${(props) => props.theme.colors.ui.primary};
+    font-family: ${(props) => props.theme.fonts.body};
+    font-size: ${(props) => props.theme.fontSizes.body};
+    text-align: center;
+`;
