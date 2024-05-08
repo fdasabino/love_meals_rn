@@ -1,5 +1,4 @@
 import React from "react";
-import { Image } from "react-native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../../assets/star";
 import { tempRestaurant } from "../../../../data/restaurant";
@@ -14,7 +13,7 @@ import {
     StarsContainer,
     StyledCard,
     Wrapper,
-} from "./styled";
+} from "./restaurant-info-card.styles";
 
 const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
     const { name, photos, icon, address, openingHours, rating, isOpenNow, isClosedTemporarily } =

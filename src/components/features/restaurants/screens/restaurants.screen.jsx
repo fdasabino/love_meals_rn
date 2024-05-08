@@ -1,6 +1,6 @@
 import React from "react";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
-import { RestaurantsList, SafeArea, Search, SearchBar } from "./styled";
+import { RestaurantsList, SafeArea, Search, SearchBar } from "./restaurants.screen.styles";
 
 const RestaurantsScreen = () => {
     return (
