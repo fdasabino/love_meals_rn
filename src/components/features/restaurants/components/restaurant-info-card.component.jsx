@@ -8,6 +8,7 @@ import {
     CardCover,
     ClosedDot,
     ClosedTemporarily,
+    Icon,
     Info,
     OpenDot,
     StarsContainer,
@@ -16,9 +17,13 @@ import {
 } from "./styled";
 
 const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
-    const { name, photos, icon, address, openingHours, rating, isOpenNow } = restaurant;
+    const { name, photos, icon, address, openingHours, rating, isOpenNow, isClosedTemporarily } =
+        restaurant;
     const ratingArray = Array.from(new Array(Math.floor(rating)));
     const renderOpen = isOpenNow ? <OpenDot /> : <ClosedDot />;
+    const renderBusinessTypeIcon = <Icon source={{ uri: icon }} />;
+    const renderIsClosedTemporarily = <ClosedTemporarily>Closed Temporarily</ClosedTemporarily>;
+
     const renderStars = ratingArray.map((_, i) => (
         <SvgXml
             key={`star-${name}-${i}`}
@@ -27,23 +32,14 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
             height={25}
         />
     ));
-    const renderBusinessTypeIcon = icon && (
-        <Image
-            source={{ uri: icon }}
-            style={{ width: 20, height: 20 }}
-        />
-    );
-    const renderIsClosedTemporarily = restaurant.isClosedTemporarily && (
-        <ClosedTemporarily>Closed Temporarily</ClosedTemporarily>
-    );
-    const renderOpeningHours = openingHours && (
+
+    const renderOpeningHours = (
         <Text
             variant="body"
             align="center">
             Opening Hours: {openingHours}
         </Text>
     );
-
     return (
         <StyledCard elevation={5}>
             <CardCover
@@ -59,7 +55,7 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
                 <StarsContainer>{renderStars}</StarsContainer>
                 <Wrapper>
                     {renderOpen}
-                    {renderBusinessTypeIcon}
+                    {icon && renderBusinessTypeIcon}
                 </Wrapper>
                 <Wrapper>{renderOpeningHours}</Wrapper>
                 <Wrapper>
@@ -69,7 +65,7 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
                         {address}
                     </Text>
                 </Wrapper>
-                {renderIsClosedTemporarily && <Wrapper>{renderIsClosedTemporarily}</Wrapper>}
+                {isClosedTemporarily && <Wrapper>{renderIsClosedTemporarily}</Wrapper>}
             </Info>
         </StyledCard>
     );

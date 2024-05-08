@@ -22,6 +22,11 @@ export const StarsContainer = styled.View`
     padding: ${(props) => props.theme.space[3]};
 `;
 
+export const Icon = styled.Image`
+    width: 20px;
+    height: 20px;
+`;
+
 export const Wrapper = styled.View`
     flex-direction: row;
     align-items: center;
