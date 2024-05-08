@@ -20,7 +20,13 @@ const RestaurantsScreen = () => {
             <RestaurantsList>
                 <FlatList
                     data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
-                    renderItem={() => <RestaurantInfoCardComponent />}
+                    renderItem={() => (
+                        <Spacer
+                            position="bottom"
+                            size="large">
+                            <RestaurantInfoCardComponent />
+                        </Spacer>
+                    )}
                     keyExtractor={(item) => item.name}
                     contentContainerStyle={{ padding: 5 }}
                 />

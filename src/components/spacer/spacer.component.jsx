@@ -6,27 +6,30 @@ const sizeVariant = {
     small: 1,
     medium: 2,
     large: 3,
+    xl: 4,
+    xxl: 5,
 };
 
 const positionVariant = {
-    top: "margin-top",
-    left: "margin-left",
-    right: "margin-right",
-    bottom: "margin-bottom",
+    top: "marginTop",
+    left: "marginLeft",
+    right: "marginRight",
+    bottom: "marginBottom",
 };
 
 const getVariant = (position, size, theme) => {
     const sizeIndex = sizeVariant[size];
     const property = positionVariant[position];
-    const value = theme.space[sizeIndex] || 0; // Default to 0 if undefined
-    return `${property}:${value}px;`;
+    const value = theme.space[sizeIndex] || 0;
+
+    return `${property}:${value}`;
 };
 
 const SpacerView = styled.View`
     ${({ variant }) => variant};
 `;
 
-export const Spacer = ({ position = "top", size = "small", children }) => {
+const Spacer = ({ position = "top", size = "small", children }) => {
     const theme = useTheme();
     const variant = getVariant(position, size, theme);
     return <SpacerView variant={variant}>{children}</SpacerView>;

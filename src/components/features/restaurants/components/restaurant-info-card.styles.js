@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 
 export const StyledCard = styled(Card)`
     background-color: ${(props) => props.theme.colors.bg.primary};
-    margin: ${(props) => props.theme.space[2]};
     padding: ${(props) => props.theme.space[2]};
 `;
 
