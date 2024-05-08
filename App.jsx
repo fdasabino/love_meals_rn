@@ -1,10 +1,16 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, Text } from "react-native";
+// Code for the App component
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { SafeAreaView, StatusBar, Text } from "react-native";
 
-export default function App() {
+const App = () => {
     return (
-        <SafeAreaView>
-            <Text>Our React native blank canvas</Text>
-        </SafeAreaView>
+        <>
+            <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }}>
+                <Text>Our React native blank canvas</Text>
+            </SafeAreaView>
+            <ExpoStatusBar style="auto" />
+        </>
     );
-}
+};
+
+export default App;
