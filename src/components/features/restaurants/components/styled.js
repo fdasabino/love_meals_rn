@@ -11,5 +11,6 @@ export const Title = styled.Text`
 `;
 
 export const CardCover = styled(Card.Cover)`
+    padding: 10px;
     background-color: white;
 `;
