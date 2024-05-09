@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components/native";
 import { SafeArea } from "./App.styles";
 import Navigation from "./src/components/navigation/navigation.component";
 import { theme } from "./src/infrastructure/theme/index";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { screens } from "./src/utils/screens";
 
 const App = () => {
@@ -23,12 +24,14 @@ const App = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <NavigationContainer>
-                <SafeArea>
-                    <Navigation screens={screens} />
-                    <ExpoStatusBar style="auto" />
-                </SafeArea>
-            </NavigationContainer>
+            <RestaurantsContextProvider>
+                <NavigationContainer>
+                    <SafeArea>
+                        <Navigation screens={screens} />
+                        <ExpoStatusBar style="auto" />
+                    </SafeArea>
+                </NavigationContainer>
+            </RestaurantsContextProvider>
         </ThemeProvider>
     );
 };

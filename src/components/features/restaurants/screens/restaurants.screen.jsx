@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { RestaurantsContext } from "../../../../services/restaurants/restaurants.context";
 import Spacer from "../../../spacer/spacer.component";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
 import { RestaurantsList, Search, SearchBar } from "./restaurants.screen.styles";
 
 const RestaurantsScreen = () => {
+    const restaurantContext = useContext(RestaurantsContext);
+
     return (
         <>
             <Search>
@@ -17,8 +20,8 @@ const RestaurantsScreen = () => {
             </Search>
 
             <RestaurantsList
-                data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
-                keyExtractor={(item) => item.name}
+                data={restaurantContext.restaurants}
+                keyExtractor={(item) => item}
                 renderItem={() => (
                     <Spacer
                         position="bottom"
