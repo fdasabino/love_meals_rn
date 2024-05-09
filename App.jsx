@@ -6,13 +6,9 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { Text } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import { SafeArea } from "./App.styles";
-import { theme } from "./src/infrastructure/theme/index";
-
-// Screens
-import MapScreen from "./src/components/features/map/screens/map.screen";
-import RestaurantsScreen from "./src/components/features/restaurants/screens/restaurants.screen";
-import SettingsScreen from "./src/components/features/settings/screens/settings.screen";
 import Navigation from "./src/components/navigation/navigation.component";
+import { theme } from "./src/infrastructure/theme/index";
+import { screens } from "./src/utils/screens";
 
 const App = () => {
     const [fontsLoaded] = useFonts({
@@ -24,24 +20,6 @@ const App = () => {
     if (!fontsLoaded) {
         return <Text>Loading...</Text>;
     }
-
-    const screens = [
-        {
-            name: "Restaurants",
-            component: RestaurantsScreen,
-            icon: "list-outline",
-        },
-        {
-            name: "Map",
-            component: MapScreen,
-            icon: "map-outline",
-        },
-        {
-            name: "Settings",
-            component: SettingsScreen,
-            icon: "settings-outline",
-        },
-    ];
 
     return (
         <ThemeProvider theme={theme}>
