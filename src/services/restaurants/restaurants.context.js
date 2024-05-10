@@ -10,12 +10,11 @@ export const RestaurantsContextProvider = ({ children }) => {
 
     const retrieveRestaurants = async () => {
         setIsLoading(true);
-
         try {
             const results = await restaurantsRequest().then(restaurantsTransform);
             setRestaurants(results);
         } catch (err) {
-            setError(err.toString());
+            setError(err);
         } finally {
             setIsLoading(false);
         }

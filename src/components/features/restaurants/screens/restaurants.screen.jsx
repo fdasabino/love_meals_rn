@@ -49,13 +49,16 @@ const RestaurantsScreen = () => {
             <RestaurantsList
                 data={restaurants}
                 keyExtractor={(item) => item.name}
-                renderItem={() => (
-                    <Spacer
-                        position="bottom"
-                        size="large">
-                        <RestaurantInfoCardComponent />
-                    </Spacer>
-                )}
+                renderItem={({ item }) => {
+                    console.log("Item: ", item);
+                    return (
+                        <Spacer
+                            position="bottom"
+                            size="large">
+                            <RestaurantInfoCardComponent restaurant={item} />
+                        </Spacer>
+                    );
+                }}
             />
         </>
     );

@@ -6,6 +6,7 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { Text } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import { SafeArea } from "./App.styles";
+import Loader from "./src/components/loader/loader.component";
 import Navigation from "./src/components/navigation/navigation.component";
 import { theme } from "./src/infrastructure/theme/index";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
@@ -19,7 +20,7 @@ const App = () => {
     });
 
     if (!fontsLoaded) {
-        return <Text>Loading...</Text>;
+        return <Loader />;
     }
 
     return (

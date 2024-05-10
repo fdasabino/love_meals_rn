@@ -15,9 +15,20 @@ import {
     Wrapper,
 } from "./restaurant-info-card.styles";
 
-const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
-    const { name, photos, icon, address, openingHours, rating, isOpenNow, isClosedTemporarily } =
-        restaurant;
+const RestaurantInfoCardComponent = ({ restaurant }) => {
+    const {
+        name,
+        photos,
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+        address,
+        rating,
+        isOpenNow,
+        isClosedTemporarily,
+        openingHours,
+    } = restaurant;
+
+    console.log(restaurant.icon);
+
     const ratingArray = Array.from(new Array(Math.floor(rating)));
     const renderOpen = isOpenNow ? <OpenDot /> : <ClosedDot />;
     const renderBusinessTypeIcon = <Icon source={{ uri: icon }} />;
@@ -39,6 +50,7 @@ const RestaurantInfoCardComponent = ({ restaurant = tempRestaurant }) => {
             Opening Hours: {openingHours}
         </Text>
     );
+
     return (
         <StyledCard elevation={5}>
             <CardCover
