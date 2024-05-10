@@ -22,11 +22,6 @@ export const RestaurantsContextProvider = ({ children }) => {
 
     useEffect(() => {
         retrieveRestaurants();
-
-        // Optional: Return a cleanup function if there are subscriptions or other cleanups needed
-        return () => {
-            // Perform any necessary cleanup here
-        };
     }, []);
 
     const value = useMemo(

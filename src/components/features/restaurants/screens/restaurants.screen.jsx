@@ -49,7 +49,6 @@ const RestaurantsScreen = () => {
                 data={restaurants}
                 keyExtractor={(item) => item.name}
                 renderItem={({ item }) => {
-                    console.log("Item: ", item);
                     return (
                         <Spacer
                             position="bottom"

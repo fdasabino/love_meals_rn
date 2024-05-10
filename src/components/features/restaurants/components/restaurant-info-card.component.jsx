@@ -1,7 +1,6 @@
 import React from "react";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../../assets/star";
-import { tempRestaurant } from "../../../../data/restaurant";
 import Text from "../../../typography/text.component";
 import {
     CardCover,
@@ -26,8 +25,6 @@ const RestaurantInfoCardComponent = ({ restaurant }) => {
         isClosedTemporarily,
         openingHours,
     } = restaurant;
-
-    console.log(restaurant.icon);
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
     const renderOpen = isOpenNow ? <OpenDot /> : <ClosedDot />;
