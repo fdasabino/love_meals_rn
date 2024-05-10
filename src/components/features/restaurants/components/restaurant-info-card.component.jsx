@@ -63,8 +63,8 @@ const RestaurantInfoCardComponent = ({ restaurant }) => {
                     align="center">
                     {name}
                 </Text>
-                <StarsContainer>{renderStars}</StarsContainer>
                 <Wrapper>
+                    <StarsContainer>{renderStars}</StarsContainer>
                     {renderOpen}
                     {icon && renderBusinessTypeIcon}
                 </Wrapper>

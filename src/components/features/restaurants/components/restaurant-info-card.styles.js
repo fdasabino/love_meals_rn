@@ -11,8 +11,9 @@ export const Info = styled.View`
 `;
 
 export const CardCover = styled(Card.Cover)`
-    padding: ${(props) => props.theme.space[2]};
+    padding: ${(props) => props.theme.space[1]};
     background-color: ${(props) => props.theme.colors.bg.primary};
+    border-radius: ${(props) => props.theme.space[2]};
 `;
 
 export const StarsContainer = styled.View`
@@ -31,7 +32,7 @@ export const Wrapper = styled.View`
     align-items: center;
     justify-content: center;
     gap: ${(props) => props.theme.space[3]};
-    padding: ${(props) => props.theme.space[3]};
+    padding: ${(props) => props.theme.space[1]};
 `;
 
 export const OpenDot = styled.View`
