@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Text } from "react-native";
 import { RestaurantsContext } from "../../../../services/restaurants/restaurants.context";
 import Loader from "../../../loader/loader.component";
 import Spacer from "../../../spacer/spacer.component";
