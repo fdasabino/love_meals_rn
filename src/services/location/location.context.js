@@ -1,35 +1,36 @@
-import React, { useEffect, useMemo, useState } from "react";
-
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import { locationRequest, locationTransform } from "./location.service";
 
-export const LocationContext = React.createContext();
+export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
-    const [keyword, setKeyword] = useState("san francisco");
+    const [keyword, setKeyword] = useState("");
     const [location, setLocation] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const onSearch = async (searchKeyword = "Antwerp") => {
-        console.log(searchKeyword);
+    const onSearch = async (searchKeyword) => {
         setIsLoading(true);
         setKeyword(searchKeyword);
         try {
-            const rawLocation = await locationRequest(searchKeyword.toLowerCase());
+            const rawLocation = await locationRequest(
+                searchKeyword && searchKeyword.toLowerCase().trim()
+            );
             const transformedLocation = await locationTransform(rawLocation);
             setLocation(transformedLocation);
             setIsLoading(false);
-            console.log(transformedLocation);
         } catch (err) {
             setIsLoading(false);
             setError(err);
-            console.error(err);
         }
     };
 
     useEffect(() => {
-        onSearch();
-    }, []);
+        if (error) {
+            const timer = setTimeout(() => setError(null), 2000);
+            return () => clearTimeout(timer);
+        }
+    }, [error]);
 
     const value = useMemo(
         () => ({

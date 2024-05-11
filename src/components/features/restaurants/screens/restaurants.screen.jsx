@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import { RestaurantsContext } from "../../../../services/restaurants/restaurants.context";
 import Loader from "../../../loader/loader.component";
+import Search from "../../../search/search.component";
 import Spacer from "../../../spacer/spacer.component";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
 import {
     ErrorMessageContainer,
     ErrorMessageText,
     RestaurantsList,
-    Search,
-    SearchBar,
 } from "./restaurants.screen.styles";
 
 const RestaurantsScreen = () => {
@@ -36,15 +35,7 @@ const RestaurantsScreen = () => {
 
     return (
         <>
-            <Search>
-                <SearchBar
-                    mode="bar"
-                    iconColor="black"
-                    clearButtonMode="while-editing"
-                    placeholder="Search"
-                    onChangeText={(query) => console.log(query)}
-                />
-            </Search>
+            <Search />
             <RestaurantsList
                 data={restaurants}
                 keyExtractor={(item) => item.name}
