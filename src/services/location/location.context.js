@@ -11,6 +11,12 @@ export const LocationContextProvider = ({ children }) => {
 
     const onSearch = async (searchKeyword) => {
         setIsLoading(true);
+
+        if (!searchKeyword.length) {
+            // Don't do anything
+            return;
+        }
+
         setKeyword(searchKeyword);
         try {
             const rawLocation = await locationRequest(
