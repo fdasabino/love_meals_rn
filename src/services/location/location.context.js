@@ -43,8 +43,8 @@ export const LocationContextProvider = ({ children }) => {
             location,
             isLoading,
             error,
-            search: onSearch,
             keyword,
+            search: onSearch,
         }),
         [location, isLoading, error, keyword]
     );

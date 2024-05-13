@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 export const LoadingSpinner = styled(AnimatedLoader).attrs({
     visible: true,
-    overlayColor: "rgba(255,255,255,0.2)",
+    overlayColor: "rgba(255,255,255,0.75)",
     source: require("./files/loader_animation.json"),
     animationStyle: {
         width: 200,
