@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { RestaurantsContext } from "../../../../services/restaurants/restaurants.context";
-import Loader from "../../../loader/loader.component";
 import Search from "../../../search/search.component";
 import Spacer from "../../../spacer/spacer.component";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
 import { RestaurantsList } from "./restaurants.screen.styles";
+
 const RestaurantsScreen = () => {
-    const { restaurants, isLoading } = useContext(RestaurantsContext);
+    const { restaurants } = useContext(RestaurantsContext);
     return (
         <>
             <Search />
@@ -18,11 +18,7 @@ const RestaurantsScreen = () => {
                         <Spacer
                             position="bottom"
                             size="large">
-                            {isLoading && <Loader />}
-                            <RestaurantInfoCardComponent
-                                restaurant={item}
-                                isLoading={isLoading}
-                            />
+                            <RestaurantInfoCardComponent restaurant={item} />
                         </Spacer>
                     );
                 }}
