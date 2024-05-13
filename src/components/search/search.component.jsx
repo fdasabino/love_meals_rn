@@ -1,18 +1,24 @@
 import React, { useContext, useState } from "react";
+import { useToast } from "react-native-toast-notifications";
 import { LocationContext } from "../../services/location/location.context";
 import Loader from "../loader/loader.component";
 import { SearchBar, SearchContainer } from "./search.styles";
 
 const Search = () => {
     const { location, isLoading, error, search, keyword } = useContext(LocationContext);
-    const [searchKeyword, setSearchKeyword] = useState(keyword);
+    const [searchKeyword, setSearchKeyword] = useState(keyword || "San Francisco");
+    const toast = useToast();
 
     if (isLoading) {
         return <Loader />;
     }
 
     if (location) {
-        console.log(location);
+        // do something with location
+    }
+
+    if (error) {
+        toast.show(error, { type: "danger" });
     }
 
     const handleChange = (query) => {
@@ -20,7 +26,7 @@ const Search = () => {
     };
 
     const handleSubmit = () => {
-        if (searchKeyword.trim().length) {
+        if (searchKeyword.length) {
             search(searchKeyword);
         }
     };
