@@ -15,8 +15,17 @@ import {
 } from "./restaurant-info-card.styles";
 
 const RestaurantInfoCardComponent = ({ restaurant }) => {
-    const { name, photos, icon, address, rating, isOpenNow, isClosedTemporarily, openingHours } =
-        restaurant;
+    const {
+        placeId,
+        name,
+        photos,
+        icon,
+        address,
+        rating,
+        isOpenNow,
+        isClosedTemporarily,
+        openingHours,
+    } = restaurant;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
     const renderOpen = isOpenNow ? <OpenDot /> : <ClosedDot />;
@@ -25,7 +34,7 @@ const RestaurantInfoCardComponent = ({ restaurant }) => {
 
     const renderStars = ratingArray.map((_, i) => (
         <SvgXml
-            key={`star-${name}-${i}`}
+            key={`star-${placeId}-${i}`}
             xml={star}
             width={25}
             height={25}
