@@ -10,26 +10,35 @@ export const LocationContextProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     const onSearch = async (searchKeyword) => {
-        setError(null); // Clear any existing errors when a new search is initiated
+        setError(null);
         setIsLoading(true);
+        setKeyword(searchKeyword);
+    };
 
-        if (!searchKeyword.length) {
-            console.log("No search keyword");
+    useEffect(() => {
+        if (!keyword.length) {
             return;
         }
 
-        setKeyword(searchKeyword);
+        const locationRequestTimeout = setTimeout(() => {
+            setIsLoading(false);
+            setError("Timeout! Please try again.");
+        }, 5000);
 
-        try {
-            const rawLocation = await locationRequest(searchKeyword.toLowerCase().trim());
-            const transformedLocation = locationTransform(rawLocation);
-            setLocation(transformedLocation);
-            setIsLoading(false);
-        } catch (err) {
-            setIsLoading(false);
-            setError(err);
-        }
-    };
+        locationRequest(keyword.trim().toLowerCase())
+            .then(locationTransform)
+            .then((result) => {
+                setIsLoading(false);
+                setLocation(result);
+                setKeyword("");
+            })
+            .catch((err) => {
+                setIsLoading(false);
+                setError(err);
+            });
+
+        return () => clearTimeout(locationRequestTimeout);
+    }, [keyword]);
 
     useEffect(() => {
         if (error) {

@@ -15,13 +15,9 @@ const Search = () => {
         search(searchKeyword);
     };
 
-    // Adding searchKeyword as a dependency so it re-runs the search when searchKeyword changes
     useEffect(() => {
-        if (searchKeyword && searchKeyword !== keyword) {
-            // Avoids initial redundant search if not required
-            search(searchKeyword);
-        }
-    }, [searchKeyword, error, isLoading, keyword, search]);
+        search(searchKeyword);
+    }, []);
 
     return (
         <>
