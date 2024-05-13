@@ -22,7 +22,7 @@ export const restaurantsTransform = ({ results = [] }) => {
             isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
             isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
             address: restaurant.vicinity,
-            icon: restaurant.ix,
+            icon: restaurant.icon,
             openingHours: "8:00 AM - 9:00 PM",
         };
     });

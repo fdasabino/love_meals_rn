@@ -15,16 +15,8 @@ import {
 } from "./restaurant-info-card.styles";
 
 const RestaurantInfoCardComponent = ({ restaurant }) => {
-    const {
-        name,
-        photos,
-        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
-        address,
-        rating,
-        isOpenNow,
-        isClosedTemporarily,
-        openingHours,
-    } = restaurant;
+    const { name, photos, icon, address, rating, isOpenNow, isClosedTemporarily, openingHours } =
+        restaurant;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
     const renderOpen = isOpenNow ? <OpenDot /> : <ClosedDot />;
