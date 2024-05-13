@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useMemo, useState } from "react";
 import { locationRequest, locationTransform } from "./location.service";
+
 export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
@@ -9,6 +10,7 @@ export const LocationContextProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     const onSearch = async (searchKeyword) => {
+        setError(null); // Clear any existing errors when a new search is initiated
         setIsLoading(true);
 
         if (!searchKeyword.length) {
@@ -17,12 +19,9 @@ export const LocationContextProvider = ({ children }) => {
         }
 
         setKeyword(searchKeyword);
-        console.log("Search keyword: ", keyword);
-        console.log("Location", location);
+
         try {
-            const rawLocation = await locationRequest(
-                searchKeyword && searchKeyword.toLowerCase().trim()
-            );
+            const rawLocation = await locationRequest(searchKeyword.toLowerCase().trim());
             const transformedLocation = locationTransform(rawLocation);
             setLocation(transformedLocation);
             setIsLoading(false);

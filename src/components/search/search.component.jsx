@@ -6,8 +6,8 @@ const Search = () => {
     const { error, search, keyword } = useContext(LocationContext);
     const [searchKeyword, setSearchKeyword] = useState(keyword || "San Francisco");
 
-    const handleChange = (e) => {
-        setSearchKeyword(e); // Corrected to fetch the value from event
+    const handleChange = (query) => {
+        setSearchKeyword(query); // Corrected to fetch the value from event
     };
 
     const handleSubmit = () => {
@@ -31,6 +31,7 @@ const Search = () => {
                 onSubmitEditing={handleSubmit}
                 icon="map-search"
                 mode="bar"
+                value={searchKeyword}
                 iconColor={error ? "tomato" : "black"}
                 placeholder="Search for a location"
             />

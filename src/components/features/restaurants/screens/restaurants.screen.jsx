@@ -5,7 +5,6 @@ import Search from "../../../search/search.component";
 import Spacer from "../../../spacer/spacer.component";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
 import { RestaurantsList } from "./restaurants.screen.styles";
-
 const RestaurantsScreen = () => {
     const { restaurants, isLoading } = useContext(RestaurantsContext);
     return (
@@ -20,7 +19,10 @@ const RestaurantsScreen = () => {
                             position="bottom"
                             size="large">
                             {isLoading && <Loader />}
-                            <RestaurantInfoCardComponent restaurant={item} />
+                            <RestaurantInfoCardComponent
+                                restaurant={item}
+                                isLoading={isLoading}
+                            />
                         </Spacer>
                     );
                 }}

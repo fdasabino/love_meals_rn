@@ -13,6 +13,7 @@ export const RestaurantsContextProvider = ({ children }) => {
     const retrieveRestaurants = async (loc) => {
         setIsLoading(true);
         setError(null); // Clear previous errors on new request
+        setRestaurants([]); // Clear previous restaurants on new request
         try {
             const results = await restaurantsRequest(loc);
             setRestaurants(restaurantsTransform(results));
