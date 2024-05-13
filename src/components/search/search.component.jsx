@@ -1,28 +1,13 @@
-import React, { useContext, useState } from "react";
-import { useToast } from "react-native-toast-notifications";
+import React, { useContext, useEffect, useState } from "react";
 import { LocationContext } from "../../services/location/location.context";
-import Loader from "../loader/loader.component";
 import { SearchBar, SearchContainer } from "./search.styles";
 
 const Search = () => {
-    const { location, isLoading, error, search, keyword } = useContext(LocationContext);
+    const { error, search, keyword } = useContext(LocationContext);
     const [searchKeyword, setSearchKeyword] = useState(keyword || "San Francisco");
-    const toast = useToast();
 
-    if (isLoading) {
-        return <Loader />;
-    }
-
-    if (location) {
-        // do something with location
-    }
-
-    if (error) {
-        toast.show(error, { type: "danger" });
-    }
-
-    const handleChange = (query) => {
-        setSearchKeyword(query);
+    const handleChange = (e) => {
+        setSearchKeyword(e); // Corrected to fetch the value from event
     };
 
     const handleSubmit = () => {
@@ -31,15 +16,22 @@ const Search = () => {
         }
     };
 
+    // Adding searchKeyword as a dependency so it re-runs the search when searchKeyword changes
+    useEffect(() => {
+        if (searchKeyword && searchKeyword !== keyword) {
+            // Avoids initial redundant search if not required
+            search(searchKeyword);
+        }
+    }, [searchKeyword, error]);
+
     return (
         <SearchContainer>
             <SearchBar
-                onChangeText={handleChange}
+                onChangeText={handleChange} // Simplified function reference
                 onSubmitEditing={handleSubmit}
                 icon="map-search"
                 mode="bar"
                 iconColor={error ? "tomato" : "black"}
-                value={searchKeyword}
                 placeholder="Search for a location"
             />
         </SearchContainer>

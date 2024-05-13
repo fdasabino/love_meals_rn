@@ -17,6 +17,8 @@ export const LocationContextProvider = ({ children }) => {
         }
 
         setKeyword(searchKeyword);
+        console.log("Search keyword: ", keyword);
+        console.log("Location", location);
         try {
             const rawLocation = await locationRequest(
                 searchKeyword && searchKeyword.toLowerCase().trim()

@@ -4,35 +4,10 @@ import Loader from "../../../loader/loader.component";
 import Search from "../../../search/search.component";
 import Spacer from "../../../spacer/spacer.component";
 import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
-import {
-    ErrorMessageContainer,
-    ErrorMessageText,
-    RestaurantsList,
-} from "./restaurants.screen.styles";
+import { RestaurantsList } from "./restaurants.screen.styles";
 
 const RestaurantsScreen = () => {
-    const { restaurants, isLoading, error } = useContext(RestaurantsContext);
-
-    if (isLoading) {
-        return <Loader />;
-    }
-
-    if (error) {
-        return (
-            <ErrorMessageContainer>
-                <ErrorMessageText>{error}</ErrorMessageText>
-            </ErrorMessageContainer>
-        );
-    }
-
-    if (!restaurants) {
-        return (
-            <ErrorMessageContainer>
-                <ErrorMessageText>No restaurants found</ErrorMessageText>
-            </ErrorMessageContainer>
-        );
-    }
-
+    const { restaurants, isLoading } = useContext(RestaurantsContext);
     return (
         <>
             <Search />
@@ -44,6 +19,7 @@ const RestaurantsScreen = () => {
                         <Spacer
                             position="bottom"
                             size="large">
+                            {isLoading && <Loader />}
                             <RestaurantInfoCardComponent restaurant={item} />
                         </Spacer>
                     );

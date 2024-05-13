@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { LocationContext } from "../location/location.context";
 import { restaurantsRequest, restaurantsTransform } from "./restaurant.service";
 
 export const RestaurantsContext = createContext();
@@ -7,22 +8,29 @@ export const RestaurantsContextProvider = ({ children }) => {
     const [restaurants, setRestaurants] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { location } = useContext(LocationContext);
 
-    const retrieveRestaurants = async () => {
+    const retrieveRestaurants = async (loc) => {
         setIsLoading(true);
+        setError(null); // Clear previous errors on new request
         try {
-            const results = await restaurantsRequest().then(restaurantsTransform);
-            setRestaurants(results);
+            const results = await restaurantsRequest(loc);
+            setRestaurants(restaurantsTransform(results));
         } catch (err) {
-            setError(err);
+            setError("Failed to fetch restaurants: " + err.message); // More detailed error message
         } finally {
             setIsLoading(false);
         }
     };
 
     useEffect(() => {
-        retrieveRestaurants();
-    }, []);
+        if (location) {
+            const locationString = `${location.lat},${location.lng}`;
+            retrieveRestaurants(locationString);
+        } else {
+            setRestaurants([]); // Optionally clear restaurants when there is no location
+        }
+    }, [location]); // Include location in the dependency array
 
     const value = useMemo(
         () => ({
