@@ -5,7 +5,7 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { SafeArea } from "./App.styles";
 import Loader from "./src/components/loader/loader.component";
-import Navigation from "./src/components/navigation/navigation.component";
+import Navigation from "./src/infrastructure/navigation/navigation.component";
 import { theme } from "./src/infrastructure/theme/index";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
