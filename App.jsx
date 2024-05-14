@@ -20,14 +20,16 @@ const App = () => {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <LocationContextProvider>
-                <RestaurantsContextProvider>
-                    <Navigation />
-                    <ExpoStatusBar style="auto" />
-                </RestaurantsContextProvider>
-            </LocationContextProvider>
-        </ThemeProvider>
+        <>
+            <ThemeProvider theme={theme}>
+                <LocationContextProvider>
+                    <RestaurantsContextProvider>
+                        <Navigation />
+                    </RestaurantsContextProvider>
+                </LocationContextProvider>
+            </ThemeProvider>
+            <ExpoStatusBar style="auto" />
+        </>
     );
 };
 
