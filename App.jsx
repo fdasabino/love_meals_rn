@@ -1,11 +1,9 @@
 import { Lato_400Regular, Lato_700Bold } from "@expo-google-fonts/lato";
 import { Oswald_400Regular, useFonts } from "@expo-google-fonts/oswald";
-import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
-import { SafeArea } from "./App.styles";
 import Loader from "./src/components/loader/loader.component";
-import Navigation from "./src/infrastructure/navigation/navigation.component";
+import Navigation from "./src/infrastructure/navigation";
 import { theme } from "./src/infrastructure/theme/index";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
@@ -26,12 +24,8 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <LocationContextProvider>
                 <RestaurantsContextProvider>
-                    <NavigationContainer>
-                        <SafeArea>
-                            <Navigation screens={screens} />
-                            <ExpoStatusBar style="auto" />
-                        </SafeArea>
-                    </NavigationContainer>
+                    <Navigation screens={screens} />
+                    <ExpoStatusBar style="auto" />
                 </RestaurantsContextProvider>
             </LocationContextProvider>
         </ThemeProvider>
