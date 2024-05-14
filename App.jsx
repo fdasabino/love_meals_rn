@@ -7,7 +7,6 @@ import Navigation from "./src/infrastructure/navigation";
 import { theme } from "./src/infrastructure/theme/index";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { screens } from "./src/utils/screens";
 
 const App = () => {
     const [fontsLoaded] = useFonts({
@@ -24,7 +23,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <LocationContextProvider>
                 <RestaurantsContextProvider>
-                    <Navigation screens={screens} />
+                    <Navigation />
                     <ExpoStatusBar style="auto" />
                 </RestaurantsContextProvider>
             </LocationContextProvider>

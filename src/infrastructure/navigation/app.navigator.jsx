@@ -2,8 +2,8 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { screens } from "../../utils/screens";
 import { SafeArea } from "./app.navigator.styles";
+import { screens } from "./screens/screens";
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
